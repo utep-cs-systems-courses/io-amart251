@@ -12,7 +12,7 @@ all: led.elf
 
 #additional rules for files
 led.elf: ${COMMON_OBJECTS} 
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ ../lib/libTimer.a
+	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ libTimer.a
 
 load: led.elf
 	msp430loader.sh led.elf
