@@ -10,8 +10,8 @@ AS              = msp430-elf-as
 
 all: main.elf led.elf
 
-main.elf: ${COMMON_OBJECTS}    ../lib/libTimer.a
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ 
+main.elf: ${COMMON_OBJECTS}    ../timerLib/libTimer.a
+	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: main.elf
 	msp430loader.sh main.elf
