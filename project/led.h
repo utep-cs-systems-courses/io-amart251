@@ -5,4 +5,5 @@
 #define LED_GREEN BIT6             // P1.6
 #define LEDS (BIT0 | BIT6)
 
-#endif // included
+#endif // included file
+
