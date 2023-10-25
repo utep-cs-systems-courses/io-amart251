@@ -1,5 +1,5 @@
 # makfile configuration
-COMMON_OBJECTS  = main.o
+COMMON_OBJECTS  = main.o  # Wdinterrupthandler.o
 CPU             = msp430g2553
 CFLAGS          = -mmcu=${CPU} -I../h
 LDFLAGS		= -L/opt/ti/msp430_gcc/include
@@ -8,13 +8,22 @@ LDFLAGS		= -L/opt/ti/msp430_gcc/include
 CC              = msp430-elf-gcc
 AS              = msp430-elf-as
 
-all: main.elf led.elf
+all:
+	led.elf
+	(cd timerLib && make install)
 
-main.elf: ${COMMON_OBJECTS}    ../lib/libTimer.a
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
+#additional rules for files
+led.elf: ${COMMON_OBJECTS}
+	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ ../lib/libTimer.a
 
-load: main.elf
-	msp430loader.sh main.elf
+load: led.elf
+	msp430loader.sh led.elf
 
 clean:
+	(cd timerLib && make clean)
 	rm -f *.o *.elf
+
+main.o: led.h
+
+wdInterruptHandler.o:  led.h
+
