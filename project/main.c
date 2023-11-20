@@ -71,8 +71,8 @@ void toggle_led() {
 }
 
 void buzzer_set_period(short cycles) {
-    // Set buzzer period
-    // Refer to the buzzer demo for details
+    CR0 = cycles; 
+    CCR1 = cycles >> 1;		/* one half cycle 
 }
 
 void __interrupt_vec(WDT_VECTOR) WDT() {
