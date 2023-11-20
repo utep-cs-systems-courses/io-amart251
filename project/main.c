@@ -71,7 +71,7 @@ void toggle_led() {
 }
 
 void buzzer_set_period(short cycles) {
-    CR0 = cycles; 
+    CRR0 = cycles; 
     CCR1 = cycles >> 1;		/* one half cycle 
 }
 
