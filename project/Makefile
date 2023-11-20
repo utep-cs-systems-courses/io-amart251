@@ -6,8 +6,7 @@ CFLAGS          = -mmcu=${CPU} -I../demos/h -L/opt/ti/msp430_gcc/include
 CC              = msp430-elf-gcc
 AS              = msp430-elf-as
 
-all: main.elf
-	libs
+all: main.elf libs
 
 libs:
 	(cd ../demos && make)
